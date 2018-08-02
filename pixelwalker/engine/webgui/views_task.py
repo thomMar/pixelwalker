@@ -60,3 +60,31 @@ def abort(request, task_id):
     task.state = Task.ABORTED
     task.save()
     return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+def export(request):
+    # Submitting values for new assessment
+    if request.POST:
+        # list all possible metrics
+        task_type_list = TaskType.objects.all()
+        for task_type in task_type_list:
+            requested_task_list = request.POST.getlist(task_type.name+'[]')
+            if len(requested_task_list) > 0:
+                for media_id in requested_task_list:
+                    # set simple task values
+                    new_task = Task()
+                    if request.POST.get('assessment_id')=='None':
+                        new_task.assessment = None
+                    else:
+                        new_task.assessment = Assessment.objects.get(id=request.POST.get('assessment_id'))
+                        #new_task.assessment.export_list.frame_in =
+                        #new_task.assessment.export_list.frame_out = 
+                    new_task.media = Media.objects.get(id=media_id)
+                    new_task.type = task_type
+                    new_task.save()
+                    new_task.export()
+
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+
+    # Return to task list
+    else:
+        return HttpResponseRedirect(reverse('webgui_task-list'))

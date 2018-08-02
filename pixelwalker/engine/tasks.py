@@ -35,6 +35,10 @@ def acknowledge(data):
             task.state = Task.QUEUED
             task.date_queued = timezone.now()
 
+        elif task_state == 'EXPORTED':
+            task.state = Task.EXPORTED
+            task.date_exported = timezone.now()
+
         else:
             # TODO: error managment
             pass

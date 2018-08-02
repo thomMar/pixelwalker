@@ -14,16 +14,16 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
+        <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 
     <h4><span class='info'>New:</span> Assessment project</h4>
 <form action="{% url 'webgui_assessment-create' %}" method="post" class="form-horizontal">
     {% csrf_token %}
-    
+
 
     <div class="form-group col-sm-7">
         <label for="name">Name</label>
@@ -38,7 +38,7 @@
     <div class="form-group col-sm-7">
         <label for="reference_media">Reference media</label>
         <select class="form-control selectpicker" data-live-search="true" name="reference_media" id="reference_media">
-            <option value='None'>Undefined</option>
+            <option value='None'>No reference MEDIA</option>
             {% if media_list %}
             {% for media in media_list %}
             <option value='{{ media.id }}'>{{ media.name }}</option>
@@ -46,7 +46,7 @@
             {% endif %}
         </select>
     </div>
-    
+
     <div class="form-group col-sm-7">
         <label for="encoded_media_list">Encoded media list</label>
         <select class="form-control selectpicker" data-live-search="true" name="encoded_media_list" id="encoded_media_list" multiple>
@@ -57,7 +57,7 @@
             {% endif %}
         </select>
     </div>
-    
+
     <div class="form-group col-sm-7">
         <button type="submit" class="btn btn-default">Create</button>
     </div>

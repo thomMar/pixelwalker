@@ -1,8 +1,10 @@
 FROM ubuntu:latest
 LABEL maintainer="github.com/antoinehng"
+ENV DEBIAN_FRONTEND noninteractive
+
 
 # Various dependencies
-RUN apt-get update -yqq && apt-get install -yqq \
+RUN apt-get update -y && apt-get install -y \
 	build-essential \
 	git \
 	python3 python3-setuptools python3-dev python3-tk python3-pip npm
@@ -15,8 +17,8 @@ WORKDIR /pixelwalker
 RUN pip3 install -r requirements.txt
 
 # Bower JS+CSS dependencies
-RUN npm install -g bower && ln -s /usr/bin/nodejs /usr/bin/node
-RUN bower --allow-root install
+RUN npm install --no-optional --only=production -g bower
+RUN bower install --config.interactive=false --allow-root
 
 # Get settings
 WORKDIR /pixelwalker/pixelwalker/pixelwalker
@@ -30,5 +32,5 @@ CMD celery worker -A pixelwalker -l info -Q engine -n engine@%h --detach && \
     python3 manage.py makemigrations && \
     python3 manage.py migrate && \
     python3 manage.py loaddata AppSettings && \
-	python3 manage.py loaddata TaskTypes && \
+  	python3 manage.py loaddata TaskTypes && \
     python3 manage.py runserver 0.0.0.0:8000

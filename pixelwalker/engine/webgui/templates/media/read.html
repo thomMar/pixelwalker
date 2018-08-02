@@ -14,9 +14,10 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
-        <li><a href="{% url 'webgui_media-update' media.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
+        <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
+        <li><a href="{% url 'webgui_media-update' media.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
         <li><a href="{% url 'webgui_media-delete' media.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
+        <li><a href="{{ media.get_file_url }}" download class='export'><i class='fas fa-file-export'></i> Simple Export</a></li>
         {% if media.get_probe_html_table %}
         <li><a href="{% url 'webgui_media-display-probe' media.id %}"><i class='fa fa-flask'></i> Probe info</a></li>
         {% endif %}
@@ -24,7 +25,7 @@
         <li><a href="{% url 'webgui_media-chart-frames' media.id %}"><i class='fa fa-bar-chart'></i> Frames analysis</a></li>
         {% endif %}
         {% for task_type in not_auto_task_list %}
-        {% media_tasktype_exists media task_type as task_exists %} 
+        {% media_tasktype_exists media task_type as task_exists %}
         {% if not task_exists %}
         <li>
             <form action="{% url 'webgui_task-create' %}" method="post">
@@ -36,10 +37,11 @@
         </li>
         {% endif %}
         {% endfor %}
+
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 <h4><span class='info'>Media:</span> {{ media.name }}</h4>
 
 <table class='table table-striped'>
@@ -124,7 +126,7 @@
  <div class="form-group col-xs-12 col-md-6">
     <input class="search form-control" placeholder="Search" />
 </div>
-    
+
 <!-- class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by. -->
 <div class="form-group col-xs-12 col-md-6">
     <button class="sort btn btn-default" data-sort="id"><i class='fa fa-sort'></i> Id</button>

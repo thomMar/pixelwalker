@@ -14,11 +14,11 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
+        <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 <h4><span class='info'>Media:</span> {{ media.name }}</h4>
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -29,7 +29,7 @@
                             {{ media.get_probe_html_table }}
                         {% endautoescape %}
                     </div>
-                </div>    
+                </div>
 {% endblock %}
 
 {% block css_requirements %}

@@ -4,6 +4,7 @@ sqlalchemy>=1.0.14
 json2table==1.1.5
 pytz==2017.2
 coveralls
-psycopg2
+psycopg2-binary
 redis==2.10.5
 natsort==5.1.1
+kombu==4.1.0

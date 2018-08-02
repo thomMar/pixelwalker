@@ -14,13 +14,13 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
-        <li><a href="{% url 'webgui_encoding-provider-update' encoding_provider.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
+        <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
+        <li><a href="{% url 'webgui_encoding-provider-update' encoding_provider.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
         <li><a href="{% url 'webgui_encoding-provider-delete' encoding_provider.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 <h4><span class='info'>Encoding provider:</span> {{ encoding_provider.name }}</h4>
 {% if media_list %}
 <table class='table'>
@@ -69,7 +69,7 @@
 
                 <ul class='actions'>
                     <li><a href="{% url 'webgui_media-read' media.id %}"><i class='fa fa-eye'></i> View</a></li>
-                    <li><a href="{% url 'webgui_media-update' media.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
+                    <li><a href="{% url 'webgui_media-update' media.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
                     <li><a href="{% url 'webgui_media-delete' media.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
                 </ul>
         </li>

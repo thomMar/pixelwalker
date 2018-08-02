@@ -43,5 +43,14 @@
           "is_video_metric": "True",
           "auto_submit_on_new_media" : "False"
         }
+    },
+    {
+        "model": "engine.TaskType",
+        "pk": 6,
+        "fields": {
+          "name": "EXPORT",
+          "is_video_metric": "False",
+          "auto_submit_on_new_media" : "False"
+        }
     }
   ]

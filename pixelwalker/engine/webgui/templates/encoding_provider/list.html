@@ -18,7 +18,7 @@
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
     {% if encoding_provider_list %}
     <div id="encoding_providers">
 
@@ -26,14 +26,14 @@
             <div class="form-group col-xs-12 col-md-6">
                 <input class="search form-control" placeholder="Search" />
             </div>
-        
+
             <!-- class="sort" automagically makes an element a sort buttons. The date-sort value decides what to sort by. -->
             <div class="form-group col-xs-12 col-md-6">
                 <button class="sort btn btn-default" data-sort="id"><i class='fa fa-sort'></i> Id</button>
                 <button class="sort btn btn-default" data-sort="name"><i class='fa fa-sort'></i> Name</button>
                 <button class="sort btn btn-default" data-sort="nb_of_media"><i class='fa fa-sort'></i> Number of media</button>
             </div>
-        
+
             <ul class="list col-xs-12">
                     {% for encoding_provider in encoding_provider_list %}
                 <li class='item'>
@@ -44,11 +44,11 @@
                         <ul class='images'>
                             {% for media in encoding_provider.get_some_media_preview %}
                             <li><img src="{{ media.get_thumbnail_url }}"></li>
-                            {% endfor %}   
+                            {% endfor %}
                         </ul>
                         <ul class='actions'>
                             <li><a href="{% url 'webgui_encoding-provider-read'  encoding_provider.id %}"><i class='fa fa-eye'></i> View</a></li>
-                            <li><a href="{% url 'webgui_encoding-provider-update' encoding_provider.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
+                            <li><a href="{% url 'webgui_encoding-provider-update' encoding_provider.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
                             <li><a href="{% url 'webgui_encoding-provider-delete' encoding_provider.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
                         </ul>
                 </li>

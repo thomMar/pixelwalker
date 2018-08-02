@@ -14,22 +14,22 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
+        <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 
     <h4><span class='info'>New:</span> Encoding provider</h4>
 <form action="{% url 'webgui_encoding-provider-create' %}" method="post" class="form-horizontal">
     {% csrf_token %}
-    
+
 
     <div class="form-group col-sm-7">
         <label for="name">Name</label>
         <input class="form-control" type="text" name="name" id="name" placeholder="Encoding provider name" required/>
     </div>
-    
+
     <div class="form-group col-sm-7">
         <button type="submit" class="btn btn-default">Create</button>
     </div>

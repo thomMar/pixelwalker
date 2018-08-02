@@ -14,14 +14,15 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
-        <li><a href="{% url 'webgui_assessment-update' assessment.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
-        <li><a href="{% url 'webgui_assessment-delete' assessment.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
-        <li><a href="{% url 'webgui_assessment-chart' assessment.id %}"><i class='fa fa-line-chart'></i> Charts</a></li>
+        <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
+        <li><a href="{% url 'webgui_assessment-update' assessment.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
+        <li><a href="{% url 'webgui_assessment-delete' assessment.id %}" class='warning'><i class='fas fa-trash'></i> Delete</a></li>
+        <li><a href="{% url 'webgui_assessment-chart' assessment.id %}"><i class='fas fa-line-chart'></i> Charts</a></li>
+        <li><a href="{% url 'webgui_assessment-export' assessment.id %}" class='export'><i class='fas fa-file-export'></i> Export Media</a></li>
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 <h4><span class='info'>Project:</span> {{ assessment.name }}</h4>
 {%if assessment.description %}
 <table class='table'>
@@ -38,14 +39,14 @@
                 {% csrf_token %}
                     <input type='hidden' name='assessment_id' value='{{ assessment.id }}'/>
                     <input type='hidden' name='reference_media_id' value='{{ assessment.reference_media.id }}'/>
-                    <table class='table table-hover table-condensed>
+                    <table class='table table-hover table-condensed'>
                         <thead>
                             <tr class='active'>
                                 <th colspan='2'>
                                     {% if assessment.reference_media != None %}
                                     Reference: <a href="{% url 'webgui_media-read' assessment.reference_media.id %}">{{ assessment.reference_media.name }}</a>
                                     {% else %}
-                                    <i><a href="{% url 'webgui_assessment-update' assessment.id %}"><i class='fa fa-pencil'></i> Edit assessment to set a reference media file</a></i>
+                                    <i><a href="{% url 'webgui_assessment-update' assessment.id %}"><i class='fas fa-pencil-alt'></i> Edit assessment to set a reference media file</a></i>
                                     {% endif %}
                                 </th>
                                 <td class='text-center'>
@@ -121,11 +122,11 @@
                                 {% if metric_list.count > 0 %}
                                 {% for metric in metric_list %}
                                 <td class='text-center'>
-                                    {% assessment_media_tasktype_exists assessment encoded_media metric as task_exists %} 
-                                    {% if task_exists %} 
+                                    {% assessment_media_tasktype_exists assessment encoded_media metric as task_exists %}
+                                    {% if task_exists %}
                                         {% for task in task_list %}
                                             {% if task.media == encoded_media and task.type == metric%}
-                                        
+
                                         {% if task.state == 1 %}
                                         <a href="{% url 'webgui_task-read' task.id %}">
                                             <span class="label label-primary">{{ task.get_state_display }}</span>
@@ -152,9 +153,9 @@
 
                                             {% endif %}
                                         {% endfor %}
-                                    {% else %}                      
+                                    {% else %}
                                        <input type="checkbox" class='select-one' name='{{ metric.name }}[]' id='{{ metric.name }}-media_{{ encoded_media.id }}' data-metric="{{ metric.name }}" value="{{ encoded_media.id }}"{% if assessment.reference_media.width is None %} disabled data-toggle="tooltip" data-placement="left" title="Missing Reference"{% endif %} {% if encoded_media.width is None %} disabled data-toggle="tooltip" data-placement="left" title="Missing Probe Results"{% endif %}>
-                                    {% endif %}                      
+                                    {% endif %}
                                 </td>
                                 {% endfor %}
                                 {% endif %}
@@ -186,7 +187,7 @@
                 </tr>
             </tbody>
         </table>
-        
+
         {% endif %}
 
 {% endblock %}

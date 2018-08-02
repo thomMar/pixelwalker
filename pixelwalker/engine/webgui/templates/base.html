@@ -4,7 +4,7 @@
 <html lang="fr">
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-		
+
 		<meta http-equiv="Pragma" content="no-cache">
 		<meta http-equiv="Expires" content="-1">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
@@ -22,15 +22,16 @@
 		<!--[if lte IE 6]><meta http-equiv="imagetoolbar" content="no" /><![endif]-->
 
 		<title>{% block tab_title %}pixelwalker{% endblock %}</title>
-
+		<link rel="shortcut icon" href="{% static 'favicon/favicon.png' %}"/>
 		<meta name="theme-color" content="#141414">
-	
+
 	{% block css_requirements %}
 		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600" rel="stylesheet">
 		<link href="{% static 'bower_components/normalize-css/normalize.css' %}" rel="stylesheet">
 		<link href="{% static 'bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
 		<link href="{% static 'bower_components/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-		<link href="{% static 'css/base.css' %}" rel="stylesheet">
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+		<link href="{% static 'css/base.css' %}?version_1" rel="stylesheet">
 	{% endblock %}
 	</head>
 	<body>
@@ -40,7 +41,7 @@
 				<div class='col-md-12'>
 				{% block header %}
 				<header>
-					<h1>{% block header_title %}<a href="#">pixelwalker</a>{% endblock %}</h1>
+					<h1 class="with-logo"> {% block header_title %}<a href="/#"> &nbsp; pixelwalker &nbsp;</a>{% endblock %}</h1>
 					<nav>
 						{% block nav %}
 							<ul>
@@ -48,9 +49,14 @@
         						<li><a href="#">Media</a></li>
         						<li><a href="#">Encoding providers</a></li>
         						<li><a href="#">Tasks</a></li>
-    						</ul>
+    					</ul>
 						{% endblock %}
-						<a href="{% url 'webgui_app-settings-read' %}" id='settings_link' data-toggle="tooltip" data-placement="left" title="Settings"><i class='fa fa-gear fa-lg'></i></a>
+						{% block settings_icon %}
+						<a href="{% url 'webgui_app-settings-read' %}" id='settings_link' data-toggle="tooltip" data-placement="left">
+								<i class='fa fa-cog fa-lg' aria-hidden="true"></i>
+								<div class="text_setting">Settings</div>
+						</a>
+						{% endblock %}
 					</nav>
 				</header>
 				{% endblock %}
@@ -65,7 +71,7 @@
 				</div>
 			{% endblock %}
 			</div>
-		</div>	
+		</div>
 		{% block js_requirements %}
 			<script src="{% static 'bower_components/jquery/dist/jquery.min.js' %}"></script>
 			<script src="{% static 'bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
@@ -76,6 +82,7 @@
 				$(function () {
   					$('[data-toggle="tooltip"]').tooltip()
 				})
+
 			</script>
 		{% endblock %}
 	</body>

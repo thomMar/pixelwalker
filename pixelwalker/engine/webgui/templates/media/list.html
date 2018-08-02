@@ -18,7 +18,7 @@
     </ul>
 {% endblock %}
 
-{% block content %}      
+{% block content %}
 {% if media_list %}
 <div id="medias">
 
@@ -62,7 +62,7 @@
 
                 <ul class='actions'>
                     <li><a href="{% url 'webgui_media-read' media.id %}"><i class='fa fa-eye'></i> View</a></li>
-                    <li><a href="{% url 'webgui_media-update' media.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
+                    <li><a href="{% url 'webgui_media-update' media.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
                     <li><a href="{% url 'webgui_media-delete' media.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
                 </ul>
         </li>

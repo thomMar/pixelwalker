@@ -12,7 +12,7 @@ def list(request):
     assessment_list = Assessment.objects.all().order_by('-id')
     return render(request, 'assessment/list.html', {'assessment_list':assessment_list})
 
-#Crud
+#Crud   #en cas de login dans les vues on peut mettre @login_required pour bloquer l'accès à une vue
 def create(request):
     # Submitting values for new assessment
     if request.POST:
@@ -32,7 +32,7 @@ def create(request):
             for encoded_media in request.POST.getlist('encoded_media_list'):
                 new_assessment.encoded_media_list.add(Media.objects.get(id=encoded_media))
             new_assessment.save()
-        
+
         return HttpResponseRedirect(reverse('webgui_assessment-read', args=(new_assessment.id,)))
 
     # Asking for the new assessment form
@@ -110,6 +110,8 @@ def delete(request, assessment_id):
     else:
         return render(request, 'assessment/delete.html', {'assessment': assessment})
 
+
+
 # Chart details view
 def chart(request, assessment_id):
     assessment = get_object_or_404(Assessment, pk=assessment_id)
@@ -123,7 +125,7 @@ def chart(request, assessment_id):
             # Default print all metrics
             for metric in metric_list:
                 chart_config['metrics'].append(int(metric.id))
-        
+
         chart_config['value_type'] = request.POST.get('value_type', 'average')
         chart_config['group_by'] = request.POST.get('group_by', 'encoded_variant')
     else:
@@ -137,3 +139,32 @@ def chart(request, assessment_id):
     annotation_list = ChartAnnotation.objects.filter(assessment=assessment)
 
     return render(request, 'assessment/chart.html', {'assessment': assessment, 'metric_list': metric_list, 'chart_config':chart_config, 'annotation_list':annotation_list})
+
+
+#export
+def export(request, assessment_id):
+    assessment = get_object_or_404(Assessment, pk=assessment_id)
+
+
+    #media = Media.objects.filter(id=assessment_id)[0]
+
+    # Submitting values for new export
+    #if request.POST:
+    media_list = Media.objects.all().order_by('name')
+    return render(request, 'assessment/export.html', {'assessment': assessment, 'media_list':media_list})
+
+
+
+
+#new_export.export_media = Media.objects.get(id=request.POST.get('export_media'))
+#TO DO
+#id name input
+
+# def download(request, path):
+#     file_path = os.path.join(settings.MEDIA_ROOT, path)
+#     if os.path.exists(file_path):
+#         with open(file_path, 'rb') as fh:
+#             response = HttpResponse(fh.read(), content_type="application/vnd.ms-excel")
+#             response['Content-Disposition'] = 'inline; filename=' + os.path.basename(file_path)
+#             return response
+#     raise Http404

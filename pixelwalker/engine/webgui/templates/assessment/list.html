@@ -18,7 +18,7 @@
     </ul>
 {% endblock %}
 
-{% block content %}      
+{% block content %}
 {% if assessment_list %}
 <div id="assessments">
 
@@ -57,7 +57,7 @@
 
                 <ul class='actions'>
                     <li><a href="{% url 'webgui_assessment-read'  assessment.id %}"><i class='fa fa-eye'></i> View</a></li>
-                    <li><a href="{% url 'webgui_assessment-update' assessment.id %}"><i class='fa fa-pencil'></i> Edit</a></li>
+                    <li><a href="{% url 'webgui_assessment-update' assessment.id %}"><i class='fas fa-pencil-alt'></i> Edit</a></li>
                     <li><a href="{% url 'webgui_assessment-delete' assessment.id %}" class='warning'><i class='fa fa-trash'></i> Delete</a></li>
                 </ul>
         </li>

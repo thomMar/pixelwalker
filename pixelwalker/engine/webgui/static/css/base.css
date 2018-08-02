@@ -6,6 +6,8 @@ body{
     text-rendering: optimizeLegibility;
     color:#666;
 }
+
+
 a:link, a:visited, button.btn-link{
 	color:#666;
 	text-decoration: none;
@@ -15,17 +17,25 @@ a:hover, a:focus, button.btn-link:hover{
 	color:#197bd6;
 	text-decoration: none;
 }
-
 a.warning:hover, a.warning:focus{
 	color:#DB4437;
 	text-decoration: none;
 }
+a.export:hover, a.export:focus{
+	color:#ab206c ;
+	text-decoration: none;
+}
 .info{
-	color:#197bd6 !important;
+ color:#197bd6 !important;
 }
 .danger{
 	color:#db4545 !important;
 }
+
+a.selected.active{
+	color:#ffffff !important;
+}
+
 .active{
 	color:#197bd6 !important;
 }
@@ -55,16 +65,27 @@ header h1{
 	margin-top:0px;
 	letter-spacing:-1px;
 }
+
+
 header h1 a:link, header h1 a:visited{
-	font-size:20px;
-	color:#ccc;
+	background-color:#f1f1f1;
+	background-position-x: 0px;
+  background-position-y: 0px;
+	font-size:22px;
+	color:#aaa;
 	font-weight: 600;
 	text-decoration: none;
-	transition: color .2s ease-out;
+	/*transition: color .6s ease-out;*/
+	transition: all .25s ease-in;
 }
-header h1 a:hover, header h1 a:focus{
-	font-size:20px;
-	color:#aaa;
+header h1 a:hover{
+	background-color:#000;
+	background-position-x: 0px;
+  background-position-y: -32px;
+	width: 150px;
+  height: 30px;
+	font-size:22px;
+	color:#ffffff;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -92,6 +113,30 @@ header nav ul li{
 	letter-spacing:0px;
 }
 
+header nav a .fa{
+
+		font-size: 3em;
+		transition: .5s;
+		line-height: .448em
+}
+
+header nav a .text_setting{
+
+	opacity: 0;
+	transition: 0.45s;
+	transform: translateX(50px);
+}
+
+header nav a:hover .fa{
+
+	transform: translateX(-40px) scale(.5);
+}
+
+header nav a:hover .text_setting{
+
+	transform: translateY(-28px);
+	opacity: 1;
+}
 
 div#page{
 	width:100%;

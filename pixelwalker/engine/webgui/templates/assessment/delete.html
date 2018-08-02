@@ -14,11 +14,11 @@
 
 {% block options %}
     <ul>
-        <li><a href='#' onclick='goBack()'><i class='fa fa-caret-left'></i> Back</a></li>
+      <li><a href='#' onclick='goBack()' title="<-goBack-<"><i class='fa fa-caret-left'></i> Back</a></li>
     </ul>
 {% endblock %}
 
-{% block content %}       
+{% block content %}
 
     <h4><span class='danger'>Delete:</span> {{ assessment.name }}</h4>
     <p class='col-sm-7 danger'>
@@ -28,7 +28,7 @@
 <form action="{% url 'webgui_assessment-delete' assessment.id %}" method="post" class="form-horizontal">
     {% csrf_token %}
     <input type="hidden" name="delete_id" id="delete_id" value="{{ assessment.id }}" required/>
-    
+
     <div class="form-group col-sm-7">
         <button type="submit" class="btn btn-danger">Yes</button>
         <a href="{% url 'webgui_assessment-read' assessment.id %}" class="btn btn-default">No</a>
