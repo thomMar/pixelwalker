@@ -49,11 +49,11 @@
                  <!-- passer un paraùetre via form action="{% url 'webgui_task-create'  assessment.id %" mais dans ce cas il faut adapter url pour qu'il receptionne l'id ahahah -->
                    <input type='hidden' name='assessment_id' value='{{ assessment.id }}'/>
                    <input type='hidden' name='reference_media_id' value='{{ assessment.reference_media.id }}'/>
-                   <label for="name_in">&nbsp; Frame IN</label>   <!--BLOCK NAME-->
-                       <input class="form-control" type="number" min="1" name="name_in" id="name_in" placeholder="Enter a frame index" defaultValue="1" value="{{ assessment.export_list.frame_in }}" required/>
+                   <label for="frame_in">&nbsp; Frame IN</label>   <!--BLOCK NAME-->
+                       <input class="form-control" type="number" min="1" name="frame_in" id="frame_in" placeholder="Enter a frame index" defaultValue="1" value="{{ assessment.export_list.frame_in }}" required/>
                        <br>
-                   <label for="name_out">&nbsp; Frame OUT</label>   <!--BLOCK NAME-->
-                       <input class="form-control" type="number" min="1" name="name_out" id="name_out" placeholder="Enter a frame index" defaultValue="10" value="{{ assessment.export_list.frame_out }}" required/>
+                   <label for="frame_out">&nbsp; Frame OUT</label>   <!--BLOCK NAME-->
+                       <input class="form-control" type="number" min="1" name="frame_out" id="frame_out" placeholder="Enter a frame index" defaultValue="10" value="{{ assessment.export_list.frame_out }}" required/>
                </div>
              </div>
          </div>
@@ -133,8 +133,8 @@
         document.getElementById("media_url").href = media_url;
       }
 
-      document.getElementById("name_in").onchange = function () {
-        var input = document.getElementById("name_out");
+      document.getElementById("frame_in").onchange = function () {
+        var input = document.getElementById("frame_out");
         input.setAttribute("min", Number(this.value)+1);
         input.setAttribute("value", Number(this.value)+1);
       }

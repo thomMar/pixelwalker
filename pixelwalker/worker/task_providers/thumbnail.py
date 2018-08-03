@@ -9,7 +9,7 @@ class ThumbnailProvider(TaskProvider):
 
     def __init__(self, task_id, input_file_path):
         """Thumbnail initialization
-        
+
         :param task_id: The task identifier
         :type task_id: int
         :param input_file_path: The input video file path
@@ -24,7 +24,7 @@ class ThumbnailProvider(TaskProvider):
         if not os.path.exists(output_directory):
             os.makedirs(output_directory)
 
-        self.output_file_path = os.path.join(output_directory, "thumb%05d.jpg")
+        self.output_file_path = os.path.join(output_directory, "thumb%05d.jpg") #%05d génère successivement 00001 00002 ....
         command = ['ffmpeg',
                 '-i', self.input_file_path,
                 '-vf', 'scale=250:-1',
@@ -44,6 +44,4 @@ class ThumbnailProvider(TaskProvider):
             data['outputs'].append(output)
             self.acknowledge_success(data)
         else:
-            self.acknowledge_error() 
-        
-        
+            self.acknowledge_error()

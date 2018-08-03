@@ -1,10 +1,10 @@
 FROM ubuntu:latest
-LABEL maintainer="github.com/antoinehng"
+LABEL maintainer="github.com/thommar"
 ENV DEBIAN_FRONTEND noninteractive
 
 
 # Various dependencies
-RUN apt-get update -y && apt-get install -y \
+RUN apt-get update -yqq && apt-get install -yqq \
 	build-essential \
 	git \
 	python3 python3-setuptools python3-dev python3-tk python3-pip npm

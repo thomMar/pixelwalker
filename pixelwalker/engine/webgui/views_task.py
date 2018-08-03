@@ -64,26 +64,23 @@ def abort(request, task_id):
 def export(request):
     # Submitting values for new assessment
     if request.POST:
-        # list all possible metrics
-        task_type_list = TaskType.objects.all()
-        for task_type in task_type_list:
-            requested_task_list = request.POST.getlist(task_type.name+'[]')
-            if len(requested_task_list) > 0:
-                for media_id in requested_task_list:
-                    # set simple task values
-                    new_task = Task()
-                    if request.POST.get('assessment_id')=='None':
-                        new_task.assessment = None
-                    else:
-                        new_task.assessment = Assessment.objects.get(id=request.POST.get('assessment_id'))
-                        #new_task.assessment.export_list.frame_in =
-                        #new_task.assessment.export_list.frame_out = 
-                    new_task.media = Media.objects.get(id=media_id)
-                    new_task.type = task_type
-                    new_task.save()
-                    new_task.export()
+        # Only Export Case
+        for media_id in request.POST.getlist('encoded_media_list'):
+            # set simple task values
+            new_task = Task()
+            if request.POST.get('assessment_id')=='None':
+                new_task.assessment = None
+                return HttpResponseRedirect(request.META['HTTP_REFERER'])
+            else:
+                new_task.assessment = Assessment.objects.get(id=request.POST.get('assessment_id'))
+                new_task.frame_in = request.POST.get('frame_in')
+                new_task.frame_out = request.POST.get('frame_out')
+            new_task.media = Media.objects.get(id=media_id)
+            new_task.type = TaskType.objects.get(name="EXPORT")
+            new_task.save()
+            new_task.export()
+            return HttpResponseRedirect(reverse('webgui_task-list'))
 
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
 
     # Return to task list
     else:

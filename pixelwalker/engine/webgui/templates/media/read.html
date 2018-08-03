@@ -32,7 +32,9 @@
                 {% csrf_token %}
                 <input type='hidden' name='assessment_id' value='None'/>
                 <input type='hidden' name='{{ task_type.name }}[]' value="{{ media.id }}"/>
-                <button type="submit" class="btn btn-link"><i class='fa fa-caret-right'></i> <b>Submit task: </b>{{ task_type.name }}</button>
+                {% if task_type.name != "EXPORT" %}
+                  <button type="submit" class="btn btn-link"><i class='fa fa-caret-right'></i> <b>Submit task: </b>{{ task_type.name }}</button>
+                {% endif %}
             </form>
         </li>
         {% endif %}

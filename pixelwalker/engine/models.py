@@ -214,7 +214,7 @@ class Task(models.Model):
         (SUCCESS, 'Success'),
         (ERROR, 'Error'),
         (ABORTED, 'Aborted'),
-        (EXPORTED, 'exported'),
+        (EXPORTED, 'Exported'),
     )
     state = models.IntegerField(default=QUEUED, choices=STATE_CHOICES)
     progress = models.IntegerField(null=True)
@@ -253,12 +253,12 @@ class Task(models.Model):
         data['media_file_path'] = self.media.file.path
         if self.media.framerate:
             data['media_framerate'] = self.media.framerate
-        if self.assessment.export:
+        if self.assessment:
             data['reference_file_path'] = self.assessment.reference_media.file.path
             data['reference_width'] = self.assessment.reference_media.width
             data['reference_height'] = self.assessment.reference_media.height
-            data['export_in'] = self.assessment.export.frame_in
-            data['export_out'] = self.assessment.export.frame_out
+            data['export_in'] = self.frame_in
+            data['export_out'] = self.frame_out
         data['type'] = self.type.name
         send_task('worker.tasks.add', args=[data])
 
