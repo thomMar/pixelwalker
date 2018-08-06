@@ -50,10 +50,13 @@
                    <input type='hidden' name='assessment_id' value='{{ assessment.id }}'/>
                    <input type='hidden' name='reference_media_id' value='{{ assessment.reference_media.id }}'/>
                    <label for="frame_in">&nbsp; Frame IN</label>   <!--BLOCK NAME-->
-                       <input class="form-control" type="number" min="1" name="frame_in" id="frame_in" placeholder="Enter a frame index" defaultValue="1" value="{{ assessment.export_list.frame_in }}" required/>
-                       <br>
+                       <input class="form-control" type="number" min="1" name="frame_in" id="frame_in" placeholder="Enter a frame index" defaultValue="1" required/>
+                       <br>                                           <!-- value c'est la valeur qui va etre envoyé dans le forumlaire -->
                    <label for="frame_out">&nbsp; Frame OUT</label>   <!--BLOCK NAME-->
-                       <input class="form-control" type="number" min="1" name="frame_out" id="frame_out" placeholder="Enter a frame index" defaultValue="10" value="{{ assessment.export_list.frame_out }}" required/>
+                       <input class="form-control" type="number" min="1" name="frame_out" id="frame_out" placeholder="Enter a frame index" defaultValue="10" required/>
+                       <br>
+                   <label class='split-export' for="split-export">&nbsp; Split with Reference &nbsp;&nbsp;</label>   <!--BLOCK NAME-->
+                   <input type="checkbox" class='split-export' name='split-export' id='split-export' value='split' {% if assessment.reference_media is None %} disabled data-toggle="tooltip" data-placement="right" title="Missing Reference Media"{% endif %}>
                </div>
              </div>
          </div>

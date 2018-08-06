@@ -32,6 +32,16 @@ a.export:hover, a.export:focus{
 	color:#db4545 !important;
 }
 
+label.split-export{
+	color:#db4545 !important;
+	position:relative;
+	top: -2px;
+}
+
+input[name="split-export"] {
+	transform: scale(1.2);
+}
+
 a.selected.active{
 	color:#ffffff !important;
 }
