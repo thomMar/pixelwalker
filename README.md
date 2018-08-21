@@ -2,7 +2,7 @@
 
 __Warning:__ _This project is about to be ready for production purposes._
 
-![Screenshot](screenoshot_pixelwalker.png)
+![Screenshot](Screenoshot_pixelwalker.png)
 
 ## How to try?
 
