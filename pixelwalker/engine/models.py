@@ -30,6 +30,8 @@ class EncodingProvider(models.Model):
 class Export(models.Model):
     frame_in = models.IntegerField(null=True)
     frame_out = models.IntegerField(null=True)
+    split_export = models.CharField(max_length=32, null=False, default='None')
+
 
 
 class Media(models.Model):
@@ -259,6 +261,7 @@ class Task(models.Model):
             data['reference_height'] = self.assessment.reference_media.height
             data['export_in'] = self.frame_in
             data['export_out'] = self.frame_out
+            data['split'] = self.split_export
         data['type'] = self.type.name
         send_task('worker.tasks.add', args=[data])
 
