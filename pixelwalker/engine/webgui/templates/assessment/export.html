@@ -53,7 +53,7 @@
                        <input class="form-control" type="number" min="1" name="frame_in" id="frame_in" placeholder="Enter a frame index" defaultValue="1" required/>
                        <br>                                           <!-- value c'est la valeur qui va etre envoyé dans le forumlaire -->
                    <label for="frame_out">&nbsp; Frame OUT</label>   <!--BLOCK NAME-->
-                       <input class="form-control" type="number" min="1" name="frame_out" id="frame_out" placeholder="Enter a frame index" defaultValue="10" required/>
+                       <input class="form-control" type="number" min="1" name="frame_out" id="frame_out" placeholder="Enter a frame index" defaultValue="20" required/>
                        <br>
                    <label class='split-export' for="split-export">&nbsp; Split with Reference &nbsp;&nbsp;</label>   <!--BLOCK NAME-->
                    <input type="checkbox" class='split-export' name='split-export' id='split-export' value='split' {% if assessment.reference_media is None %} disabled data-toggle="tooltip" data-placement="right" title="Missing Reference Media"{% endif %}>

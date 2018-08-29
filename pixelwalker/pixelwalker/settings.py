@@ -133,8 +133,8 @@ STATICFILES_DIRS = [
 
 # Media Files upload to
 
-MEDIA_ROOT = '/home/tmarin/Documents/pixelwalker-master/media_library' #ici c le path des media du point de vue serveur
-MEDIA_URL = '/media/' #ici c'est l'url des média vu de l'intearfec utilisateur
+MEDIA_ROOT = '/home/labo/Documents/pixelwalker/media_library' #ici c le path des medias du point de vue serveur
+MEDIA_URL = '/media/' #ici c'est l'url des médias vue de l'interface utilisateur
 
 
 # Celery settings

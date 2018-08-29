@@ -17,6 +17,8 @@ def add(data):
         task_reference_height = int(data.get('reference_height', 0))
         task_media_frame_in = int(data.get('export_in', 0))
         task_media_frame_out = int(data.get('export_out', 0))
+        task_split = str(data.get('split', 0))
+
     except:
         # TODO: error management
         pass
@@ -36,7 +38,7 @@ def add(data):
                                           task_reference_file_path, task_reference_width, task_reference_height)
     elif task_type == 'EXPORT':
         task_provider = export.ExportProvider(task_id, task_media_file_path, task_media_frame_in, task_media_frame_out,
-                                              task_reference_file_path, task_reference_width, task_reference_height)
+                                              task_reference_file_path, task_reference_width, task_reference_height, task_split)
     else:
         # TODO: error management
         pass

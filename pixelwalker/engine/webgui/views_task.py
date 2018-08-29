@@ -77,6 +77,11 @@ def export(request):
                 new_task.frame_out = request.POST.get('frame_out')
             new_task.media = Media.objects.get(id=media_id)
             new_task.type = TaskType.objects.get(name="EXPORT")
+            split_export = request.POST.get('split-export', None)
+            if split_export:
+                new_task.split_export = 1
+            else:
+                new_task.split_export = None
             new_task.save()
             new_task.export()
             return HttpResponseRedirect(reverse('webgui_task-list'))
