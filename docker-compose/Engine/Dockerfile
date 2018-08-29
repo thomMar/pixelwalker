@@ -1,13 +1,13 @@
 FROM ubuntu:latest
-LABEL maintainer="github.com/thommar"
+LABEL maintainer="github.com/thomMar"
 ENV DEBIAN_FRONTEND noninteractive
 
 
 # Various dependencies
 RUN apt-get update -yqq && apt-get install -yqq \
-	build-essential \
+	build-essential software-properties-common \
 	git \
-	python3 python3-setuptools python3-dev python3-tk python3-pip npm
+	python3 python3-setuptools python3-dev python3-tk python3-pip npm --no-install-recommends apt-utils
 
 # Clone pixelwalker repo
 COPY . /pixelwalker
