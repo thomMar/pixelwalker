@@ -2,8 +2,12 @@
 
 __Warning:__ _This project is about to be ready for production purposes._
 
-![Screenshot](Screenshot_pixelwalker.png  "Web Interface"){ width=50% }
-![Screenshot2](Screenshot_split-export.png  "Split-Export"){ width=50% }
+![Screenshot](Screenshot_pixelwalker.png  "Web Interface")
+
+_____________________________________________________________________________________________________________
+
+
+![Screenshot2](Screenshot_split-export.png  "Split-Export")
 
 ## How to try?
 
