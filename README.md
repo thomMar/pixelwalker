@@ -2,7 +2,8 @@
 
 __Warning:__ _This project is about to be ready for production purposes._
 
-![Screenshot](Screenshot_pixelwalker.png | width=100 "Web Interface")
+![Screenshot](Screenshot_pixelwalker.png  "Web Interface")
+![Screenshot2](Screenshot_split-export.png  "Split-Export")
 
 
 <p float="left">
