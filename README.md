@@ -2,7 +2,13 @@
 
 __Warning:__ _This project is about to be ready for production purposes._
 
-![Screenshot](Screenshot_pixelwalker.png)
+![Screenshot](Screenshot_pixelwalker.png = 400x)
+![Screenshot2](Screenshot_split-export.png = 400x)
+
+<p float="left">
+  <img src="my_movie.mxf-PSNR-0.09-Per_Title.png" width="400" />
+  <img src="my_movie.mxf-PSNR-0.09-Per_Title_Histogram.png" width="400" />
+</p>
 
 ## How to try?
 
