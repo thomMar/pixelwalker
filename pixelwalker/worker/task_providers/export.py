@@ -51,7 +51,7 @@ class ExportProvider(TaskProvider):
          #%05d génère successivement 00001 00002 ....
 
         if self.split_required == '1':
-            self.output_file_path = os.path.join(output_directory, str('SPLIT_'+os.path.splitext(os.path.basename(self.input_file_path))[0]+'.yuv'))
+            self.output_file_path = os.path.join(output_directory, str('SPLIT_'+os.path.splitext(os.path.basename(self.input_file_path))[0]+'.mp4')) #mp4 header only
             command = ['ffmpeg',
                     '-i', self.reference_file_path,
                     '-i', self.input_file_path,
@@ -59,6 +59,7 @@ class ExportProvider(TaskProvider):
                     '-filter_complex', '[0]crop=iw/2:ih:0:0,pad=iw*2:ih[left];[1]scale='+self.reference_width+':'+self.reference_height+'[scaled];[scaled]crop=iw/2:ih:iw/2:0[right];[left][right]overlay=w[main],[main]select=between(n\,'+self.input_frame_in+'\,'+self.input_frame_out+'),setpts=PTS-STARTPTS,drawtext=text=''reference'': fontcolor=white: fontsize=24 :box=1: boxcolor=black@0.5 :boxborderw=5:x=(w-text_w)/4.5:y=(h-text_h)/1.1,drawtext=text=''encoded'': fontcolor=white: fontsize=24 :box=1: boxcolor=black@0.5:boxborderw=5:x=(w-text_w)/1.4:y=(h-text_h)/1.1',
                     '-c:v', 'h264',
                     '-b:v', '50M',
+                    #'-c:v', 'rawvideo', #format raw tous les piels sont codés
                     #'-pix_fmt', 'yuv420p'
                      self.output_file_path]
 
