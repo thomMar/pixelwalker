@@ -16,7 +16,7 @@ Using [docker-compose](https://docs.docker.com/compose/install/)
 ```
 # GETTING THE SOURCE
 # Clone the repo and make it your active directory
-git clone https://github.com/antoinehng/pixelwalker ./pixelwalker
+git clone https://github.com/thomMar/pixelwalker ./pixelwalker
 cd ./pixelwalker
 
 # CREATE A MEDIA LIBRARY FOLDER ON YOUR HOST
